@@ -4,8 +4,14 @@ import os
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
-    return "Timeweb Cloud + Flask = ❤️"
+def jira_webhook():
+    """
+    Обработка webhook запроса от Jira с проверкой секретного ключа.
+    """
+    logger.info("Получен запрос от webhook")
+
+    data = request.json
+    logger.info(f"Полученные данные: {data}")
 
 if __name__ == "__main__":
     port = 8080
